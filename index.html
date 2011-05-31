@@ -1,0 +1,23 @@
+<html>
+<script src="data/facebook.json"></script>
+<script src="data/twttier.json"></script>
+<script src="actMap.js"></script>
+<script>
+
+var dump = function(object, nodeId) { 
+	document.getElementById(nodeId).innerHTML += JSON.stringify(object, null, 4);
+}
+
+var init = function() { 
+	for (var tweet in tweets) dump(exp(actMap.twitter.rules, tweets[tweet]), 'twitter');
+	for (var post in facefeed.data) dump(exp(actMap.facebook.rules, facefeed.data[post]), 'facebook');
+}
+
+</script>
+<body onload="init()">
+<h1> Activity Mapping Test </h1>
+<h3> Twitter Sample </h3>
+<pre id="twitter"></pre>
+<h3> Facebook Sample </h3>
+<pre id="facebook"></pre>
+</body>

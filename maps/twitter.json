@@ -1,0 +1,29 @@
+{	name :  'Twitter',	 
+	feeds:	[ 'http://api.twitter.com/version/statuses/user_timeline.json' ],
+	match:	'[*]',
+	rules: 	{
+		id	:	'http://twitter.com/{user.screen_name}/statuses/{id}',
+		actor:	{
+			title : '{user.name}',
+			id	  :	'http://twitter.com/{user.screen_name}'
+		},
+		target:	{ 
+			id	:'http://twitter.com/{in_reply_to_screen_name}',
+			objectType: 'https://github.com/activitystreams/json-schema/blob/master/objectTypes/person.json'
+		},	
+		verb:		'post',
+		object:		{
+			id		:	'{id}',
+			objectType:	'https://github.com/activitystreams/json-schema/blob/master/objectTypes/status.json'
+		},
+		published: 	'{created_at}',
+		provider: 	{	id:'{source}' },
+		geo	:		{ latitude: '{coordinates.coordinates[0]}', longitude: '{coordinates.coordinates[1]}' },	
+		icon:		{},	
+		tags:		[],
+		title:		'',
+		content:	'{text}',
+		url: 		'',
+		links: 		[]
+	}		
+}

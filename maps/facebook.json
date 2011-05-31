@@ -1,0 +1,26 @@
+{	name	: 'Facebook Activity Map',
+	feeds	: [	'https://graph.facebook.com/{username}/feed' ],
+	match	: 	'data[*]',
+	rules	: {
+		id	:	 	'{actions[0].link}',
+		published:	'{created_time}',
+		actor: {
+			id	: 	'{from.id}',
+			title:	'{from.name}'
+		},
+		object:	{
+			id:		'',
+			objectType:'{type}.json'
+		},
+		verb:		'{type}',
+		provider: {
+			id:		'{application.id}',
+			title:	'{application.name}',
+		},
+		title:		'{name}',
+		icon:		'{icon}',
+		content: 	'{description}',
+		url:		'{link}',
+		target:		{}
+	}
+}

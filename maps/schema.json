@@ -1,0 +1,7 @@
+{ 	name	: 'actMap',
+	properties: { 
+		feeds	: { type:'array', items: { type:'string', format:'url' } },
+		match	: { type:'string', default:'[*]' },
+		rules	: { $ref:'https://github.com/activitystreams/json-schema/blob/master/activity.json' }
+	}
+}
